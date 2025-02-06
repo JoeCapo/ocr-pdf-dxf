@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Upload File</title>
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-xl mx-auto my-10 p-5 bg-white rounded-lg shadow-md">
+        <h1 class="text-2xl font-semibold text-center text-gray-800">Upload PDF or DXF File</h1>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="flashes">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <form class="mt-6" method="post" enctype="multipart/form-data">
+          <div class="mb-4">
+            <input type="file" name="file" class="w-full text-gray-700 bg-gray-200 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          </div>
+          <div class="text-center">
+            <input type="submit" value="Upload" class="w-full py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer">
+          </div>
+        </form>
+        <div id="result" class="mt-6 fade-in"></div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
